@@ -5,46 +5,13 @@
 import cv2 as cv
 import numpy as np
 
-
-#Initialising lists to store the required data
-Hb_Hg=[]
-Pb_Pg=[]
-priority_order=[]
-image_by_ratio=[]
-
+#initialising empty list for the storage of the priority ratios
+l_ratio = []
 
 #initialising the BGR code for blue and red colours respectively 
 b_bgr=np.array([255,0,0])
 r_bgr=np.array([0,0,255])
 
-
-#Storing the path to a variable 
-path = "Enter the exact path of the input file"
-
-#reading the input image file to be used for the task and processing it
-img = cv.imread(cv.samples.findFile(path))
-
-#showing the image input
-cv.imshow("Input Image",img)
-
-#using the wait Key to hold the image on the screen
-print("The input image will be flashed up on the screen for your reference, press \'e\' to exit")
-k = cv.waitKey(0) #0 refers to waiting infinitely
-if k == ord('e'):
-    cv.destroyAllWindows() #quiting from the image shown
-
-#making a copy of the image
-copy2 = img.copy()
-final_img = img.copy()
-
-#the image above is in Blue-green-red(BGR) format and now we need to convert it into Hue-Saturation-Value (HSV) format
-hsv = cv.cvtColor(img,cv.COLOR_BGR2HSV)
-
-#List allocations to store the data
-bur_red=[]
-bur_blue=[]
-un_red=[]
-un_blue=[]
 
 
 #Identification of houses
@@ -121,38 +88,76 @@ def const_house():
     for i in un_blue:
         cv.drawContours(final_img, [i], 0, (255, 0 ,0), -1)
 
-
-mask_burnt()
-const_house()
- 
-
-#Finalising the final output
-total_houses=[len(bur_red)+len(bur_blue),len(un_red)+len(un_blue)] #these are in the order [burnt,unburnt]
-
-priority=[len(bur_red)+2*len(bur_blue),len(un_red)+2*len(un_blue)] #these are in the order [burnt,unburnt]
-
-ratio=total_houses[0]/total_houses[1]
-
-
-#Storing the output
-Hb_Hg.append(total_houses)
-Pb_Pg.append(priority)
-priority_order.append(ratio)
-image_by_ratio.append([path,ratio])
-
-#Printing the final image
-cv.imshow("Output", final_img)
-cv.waitKey(0)
-k = cv.waitKey()
-if k == "e":
-    cv.destroyAllWindows
-
-
-#Printing the final output
-print("Number of houses on the burnt grass and the number of houses on the green:",Hb_Hg)
-print("The total priority of houses on the burnt grass and the total priority of houses on the green grass:",Pb_Pg)
-print("Rescue ratio of priority:",priority_order)
-
+for i in range(10):    
+    #Initialising lists to store the required data
+    Hb_Hg=[]
+    Pb_Pg=[]
+    priority_order=[]
+    image_by_ratio=[]
+    
+    
+    #Storing the path to a variable 
+    path = "Enter the exact path of the input file"
+    
+    #reading the input image file to be used for the task and processing it
+    img = cv.imread(cv.samples.findFile(path))
+    
+    #showing the image input
+    cv.imshow("Input Image",img)
+    
+    #using the wait Key to hold the image on the screen
+    print("The input image will be flashed up on the screen for your reference, press \'e\' to exit")
+    k = cv.waitKey(0) #0 refers to waiting infinitely
+    if k == ord('e'):
+        cv.destroyAllWindows() #quiting from the image shown
+    
+    #making a copy of the image
+    copy2 = img.copy()
+    final_img = img.copy()
+    
+    #the image above is in Blue-green-red(BGR) format and now we need to convert it into Hue-Saturation-Value (HSV) format
+    hsv = cv.cvtColor(img,cv.COLOR_BGR2HSV)
+    
+    #List allocations to store the data
+    bur_red=[]
+    bur_blue=[]
+    un_red=[]
+    un_blue=[]
+    
+    mask_burnt()
+    const_house()
+     
+    
+    #Finalising the final output
+    total_houses=[len(bur_red)+len(bur_blue),len(un_red)+len(un_blue)] #these are in the order [burnt,unburnt]
+    
+    priority=[len(bur_red)+2*len(bur_blue),len(un_red)+2*len(un_blue)] #these are in the order [burnt,unburnt]
+    
+    ratio=total_houses[0]/total_houses[1]
+    
+    
+    #Storing the output
+    Hb_Hg.append(total_houses)
+    Pb_Pg.append(priority)
+    priority_order.append(ratio)
+    image_by_ratio.append([path,ratio])
+    
+    #Printing the final image
+    cv.imshow("Output", final_img)
+    cv.waitKey(0)
+    k = cv.waitKey()
+    if k == "e":
+        cv.destroyAllWindows
+    
+    
+    #Printing the final output
+    print("Number of houses on the burnt grass and the number of houses on the green:",Hb_Hg)
+    print("The total priority of houses on the burnt grass and the total priority of houses on the green grass:",Pb_Pg)
+    print("Rescue ratio of priority:",priority_order)
+    l_ratio.append(priority_order)
+l_ratio.sort()
+l_ratio.reverse()
+print("The priority order in the descending format is:",l_ratio)
 #Thanks for visiting
 
 
