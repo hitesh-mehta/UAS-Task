@@ -20,7 +20,6 @@ A rescue ratio based on the calculated priorities.
 A list of image names sorted by their rescue ratios.
 
 # Implementation Steps
-Implementation Steps
 
 Loading and Processing Images: Load the images and preprocess them for further analysis.
 
@@ -38,14 +37,16 @@ Generating Output: Generate output images and lists of counts, priorities, and r
 
 # Getting Started
 
-Clone this repository: git clone https://github.com/your-username/search-and-rescue.git
+Clone this repository: git clone https://github.com/hitesh-mehta/UAS-Task
 Place your UAV-captured images in the repository's designated folder.
 Modify the script to fit your image filenames, paths, and desired parameters.
 Run the script.
 
 # Requirements
 Python 3.8
+
 OpenCV
+
 NumPy
 
 # Results
