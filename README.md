@@ -38,8 +38,11 @@ Generating Output: Generate output images and lists of counts, priorities, and r
 # Getting Started
 
 Clone this repository: git clone https://github.com/hitesh-mehta/UAS-Task
+
 Place your UAV-captured images in the repository's designated folder.
+
 Modify the script to fit your image filenames, paths, and desired parameters.
+
 Run the script.
 
 # Requirements
