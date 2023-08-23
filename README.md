@@ -36,16 +36,17 @@ Sorting Images: Sort the images based on their rescue ratios.
 
 Generating Output: Generate output images and lists of counts, priorities, and ratios.
 
-#@Getting Started
+# Getting Started
+
 Clone this repository: git clone https://github.com/your-username/search-and-rescue.git
 Place your UAV-captured images in the repository's designated folder.
 Modify the script to fit your image filenames, paths, and desired parameters.
-Run the script: python search_and_rescue.py
+Run the script.
 
-#@Dependencies
+# Requirements
 Python 3.8
 OpenCV
 NumPy
 
-##Results
+# Results
 The results will be displayed in the form of output images and calculated values for each input image.
